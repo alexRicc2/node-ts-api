@@ -7,6 +7,27 @@ describe('Beach forecast functional tests', () => {
     expect(status).toBe(200)
     expect(body.soma).toBe(6)
   })
+  it('should return status 400 if password or username is undefined', async()=>{
+
+    const combinations = [
+      {password: '123456'},
+      {username: 'alex'},
+      {}
+    ]
+    for(const data of combinations){
+      const {status} = await global.testRequest.post('/forecast/login').send(data)
+      expect(status).toBe(400)
+    }
+  })
+  it('given password and username, should return status 200 and an userId', async()=>{
+    const data = {
+      username: 'alex',
+      password: '123445'
+    }
+    const {status, body} = await global.testRequest.post('/forecast/login').send(data)
+    expect(status).toBe(200)
+    expect(body.userId).toEqual(expect.any(Number))
+  })
   it('should return a forecast with just a few times', async() => {
     const { body, status } = await global.testRequest.get('/forecast');
     expect(status).toBe(200);

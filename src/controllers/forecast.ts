@@ -10,6 +10,14 @@ export class ForecastController {
     const {numero, numero2} = req.body
     res.send({soma: numero + numero2})
   }
+  
+  @Post('login')
+  public LoginTesteDoAlex(req: Request, res: Response): void{
+    if(!req.body.username || !req.body.password)
+      res.sendStatus(400)
+    
+    res.send({userId: 40})
+  }
 
   @Get('')
   public getForecastForgeLoggedUser(_: Request, res: Response): void {
