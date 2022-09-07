@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { resolve } = require('path');
 const root = resolve(__dirname);
 module.exports = {

@@ -1,4 +1,12 @@
 describe('Beach forecast functional tests', () => {
+  it('should return the sum of two given numbers', async()=>{
+    const {body, status} = await global.testRequest.post('/forecast/somaNumeros').send({
+      numero: 2,
+      numero2: 4
+    });
+    expect(status).toBe(200)
+    expect(body.soma).toBe(6)
+  })
   it('should return a forecast with just a few times', async() => {
     const { body, status } = await global.testRequest.get('/forecast');
     expect(status).toBe(200);

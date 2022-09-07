@@ -1,8 +1,15 @@
-import { Controller, Get } from "@overnightjs/core";
+import { Controller, Get, Post } from "@overnightjs/core";
 import { Request, Response } from "express";
 
 @Controller('forecast')
 export class ForecastController {
+
+
+  @Post('somaNumeros')
+  public PostTesteDoAlex(req: Request, res: Response): void{
+    const {numero, numero2} = req.body
+    res.send({soma: numero + numero2})
+  }
 
   @Get('')
   public getForecastForgeLoggedUser(_: Request, res: Response): void {
